@@ -17,7 +17,8 @@ public class FishUnit : MonoBehaviour
     [SerializeField][Range (0, 1)]private float nextTargetRatio;
 
     [Header ("Target Setup")]
-    [HideInInspector][SerializeField]private Vector3 destination;
+    [HideInInspector]
+    [SerializeField]private Vector3 destination;
     [SerializeField]private float distanceThreshold;
     [SerializeField]private float maxRedirectTime;
     [HideInInspector][SerializeField]private float redirectTime;
@@ -39,8 +40,8 @@ public class FishUnit : MonoBehaviour
     [Header ("Properties")]
     private bool isRotate = false;
     private Vector3 rotatePoint;
-    public List<UnitType> fishType;
-    public List<UnitType> mammalType;
+    [HideInInspector]public List<UnitType> fishType;
+    [HideInInspector]public List<UnitType> mammalType;
     public float aliveDuration;
     private bool isDead = false;
     [Range (0, 1)]public float speedRatio;
@@ -56,6 +57,10 @@ public class FishUnit : MonoBehaviour
 
     public void SetInitDestination(Vector3 dest){
         destination = dest;
+    }
+
+    public void SetBaseMap(Texture baseMap){
+        _renderer.material.SetTexture("_BaseMap", baseMap);
     }
 
     public void SpawnMe(){

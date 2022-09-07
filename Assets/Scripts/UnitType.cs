@@ -5,11 +5,13 @@ using UnityEngine;
 
 [System.Serializable]
 public enum UnitType{
-    Tuna = 0,
-    Parrotfish = 1,
-    Shark = 2,
-    Dugong = 3,
-    Dolphin = 4,
-    Whale = 5,
-    Turtle = 6,
+
+    Dugong = 1,
+    Dolphin = 2,
+    Whale = 3,
+    Tuna = 4,
+    Turtle = 5,
+    Parrotfish = 6,
+    Shark = 7,
+    
 }

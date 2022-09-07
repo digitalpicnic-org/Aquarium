@@ -128,7 +128,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8715743b9dd7545148bc70cce1833479, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _type: 2
+  _type: 7
   maxDepth: 3
   minZPos: 9
   nextTargetRatio: 0.3

@@ -1,0 +1,67 @@
+{
+    "spawnSetUps": [
+        {
+            "unitType": 4,
+            "spawnBound": 4.0,
+            "zOffset": -9.0,
+            "maxUnit": 30,
+            "maxDuration": 4.0,
+            "fishSpeedRatio": 0.4000000059604645,
+            "autoSetup": false
+        },
+        {
+            "unitType": 7,
+            "spawnBound": 3.0,
+            "zOffset": -6.5,
+            "maxUnit": 15,
+            "maxDuration": 5.0,
+            "fishSpeedRatio": 0.4000000059604645,
+            "autoSetup": false
+        },
+        {
+            "unitType": 6,
+            "spawnBound": 4.0,
+            "zOffset": -8.0,
+            "maxUnit": 15,
+            "maxDuration": 4.0,
+            "fishSpeedRatio": 0.4000000059604645,
+            "autoSetup": false
+        },
+        {
+            "unitType": 2,
+            "spawnBound": 3.0,
+            "zOffset": -8.5,
+            "maxUnit": 6,
+            "maxDuration": 10.0,
+            "fishSpeedRatio": 0.4000000059604645,
+            "autoSetup": false
+        },
+        {
+            "unitType": 1,
+            "spawnBound": 2.0,
+            "zOffset": -6.0,
+            "maxUnit": 7,
+            "maxDuration": 5.0,
+            "fishSpeedRatio": 0.4000000059604645,
+            "autoSetup": false
+        },
+        {
+            "unitType": 3,
+            "spawnBound": 1.0,
+            "zOffset": -5.5,
+            "maxUnit": 5,
+            "maxDuration": 10.0,
+            "fishSpeedRatio": 0.4000000059604645,
+            "autoSetup": false
+        },
+        {
+            "unitType": 5,
+            "spawnBound": 2.0,
+            "zOffset": -10.0,
+            "maxUnit": 15,
+            "maxDuration": 5.0,
+            "fishSpeedRatio": 0.4000000059604645,
+            "autoSetup": false
+        }
+    ]
+}

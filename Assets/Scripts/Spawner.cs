@@ -7,38 +7,46 @@ public class Spawner : MonoBehaviour
     [Header ("Unit Setup")]
     [SerializeField]private FishUnit fishUnitPrefab;
     [Header ("Spawn Zone")]
-    [SerializeField]private Vector3 spawnBounds;
-    [SerializeField]private Vector3 offset;
+    [SerializeField]private float spawnBound;
+    [SerializeField]private float offset;
     [SerializeField]private KeyCode keyCode;
     [Header ("Spawn Setup")]    
     [SerializeField]public List<FishUnit> allFish = new List<FishUnit>();
     [SerializeField]private bool autoSetup;
     [SerializeField]private int maxUnit;
     [SerializeField]public float maxDuration;
+    [SerializeField]private float fishSpeedRatio;
     [SerializeField]private List<NewFishUnit> newFishs = new List<NewFishUnit>();
 
+    [Header ("Shader Fish")]
+    [SerializeField]private Texture defaultTexture;
+    [SerializeField]private Texture nextTexture;
 
     // Type Properties
     private List<UnitType> _fishType = new List<UnitType>();
     public List<UnitType> fishType {get {return _fishType;}}
     private List<UnitType> _mammalType = new List<UnitType>();
     public List<UnitType> mammalType {get {return _mammalType;}}
+    public UnitType spawnerType;
+    private bool isStart = false;
 
     void Start()
     {
-        SetupUnitType();
+        // SetupUnitType();
+    }
+
+    public void SetupUnitType(){
+        UnitType[] fishs = {UnitType.Tuna, UnitType.Parrotfish, UnitType.Shark};
+        UnitType[] mammals =  {UnitType.Whale, UnitType.Dolphin, UnitType.Dugong};
+        _fishType.AddRange(fishs);
+        _mammalType.AddRange(mammals);
+        
         if(autoSetup){
             for(int i = 0 ; i < maxUnit ; i++){
                 GenerateUnit();
             }
         }
-    }
-
-    private void SetupUnitType(){
-        UnitType[] fishs = {UnitType.Tuna, UnitType.Parrotfish, UnitType.Shark};
-        UnitType[] mammals =  {UnitType.Whale, UnitType.Dolphin, UnitType.Dugong};
-        _fishType.AddRange(fishs);
-        _mammalType.AddRange(mammals);
+        isStart = true;
     }
 
     // Generate new Unit -> Check fishs in pool -> spawn
@@ -47,6 +55,8 @@ public class Spawner : MonoBehaviour
 
     void Update()
     {
+        if(!isStart) return;
+
         if(Input.GetKeyDown(keyCode)){
             // SpawnFish();
             GenerateUnit();
@@ -70,40 +80,48 @@ public class Spawner : MonoBehaviour
     private void GenerateUnit(){
         Vector3 destination;
         Vector3 spawnPosition = RandomSpawnPoint(out destination);
-        newFishs.Add(new NewFishUnit(destination, spawnPosition));
+        if(nextTexture)
+            newFishs.Add(new NewFishUnit(destination, spawnPosition, nextTexture));
+        else
+            newFishs.Add(new NewFishUnit(destination, spawnPosition, defaultTexture));
+        nextTexture = null;
     }
 
     private Vector3 RandomSpawnPoint(out Vector3 destination){
-        var scale = UnityEngine.Random.insideUnitCircle;
-        var spawnOffset = transform.position + offset;
-        Vector3 spawnPosition = new Vector3 (spawnBounds.x * scale.x + spawnOffset.x, 
-                                        (spawnBounds.z * scale.y + spawnOffset.z) * 1.732f / 2 , 
-                                        (spawnBounds.z * scale.y + spawnOffset.z));
+        var scale = UnityEngine.Random.insideUnitSphere;
+        var spawnOffset = transform.position + Vector3.forward * offset;
 
-        destination = new Vector3(scale.x * spawnBounds.x + spawnOffset.x,
-                                            scale.y * spawnBounds.y + spawnOffset.y,
-                                            spawnBounds.z * scale.y + spawnOffset.z);
+        var zPos = spawnBound/2 * scale.z + spawnOffset.z;
+
+        Vector3 spawnPosition = new Vector3 (zPos * 2.1f * scale.x + spawnOffset.x, 
+                                        zPos / 1.732f + spawnOffset.y, 
+                                        zPos );
+
+        destination = new Vector3(  zPos * 2.1f * scale.x + spawnOffset.x, 
+                                    zPos / 2.5f * scale.y + spawnOffset.y,
+                                    zPos );
         return spawnPosition;
     }
 
-    private void SpawnFish(){
+    // private void SpawnFish(){
 
-        var scale = UnityEngine.Random.insideUnitCircle;
-        var spawnOffset = transform.position + offset;
-        var spawnPosition = new Vector3 (spawnBounds.x * scale.x + spawnOffset.x, 
-                                        (spawnBounds.z * scale.y + spawnOffset.z) * 1.732f / 2 , 
-                                        (spawnBounds.z * scale.y + spawnOffset.z));
+    //     var scale = UnityEngine.Random.insideUnitCircle;
+    //     var spawnOffset = transform.position + Vector3.forward * offset;
+    //     var spawnPosition = new Vector3 (spawnBound.x * scale.x + spawnOffset.x, 
+    //                                     (spawnBounds.z * scale.y + spawnOffset.z) * 1.732f / 2 , 
+    //                                     (spawnBounds.z * scale.y + spawnOffset.z));
         
-        var unit = Instantiate( fishUnitPrefab, 
-                                spawnPosition,
-                                Quaternion.Euler(0, 90, 0) );
+    //     var unit = Instantiate( fishUnitPrefab, 
+    //                             spawnPosition,
+    //                             Quaternion.Euler(0, 90, 0) );
 
-        unit.SetInitDestination(new Vector3(scale.x * spawnBounds.x + spawnOffset.x,
-                                            scale.y * spawnBounds.y + spawnOffset.y,
-                                            spawnBounds.z * scale.y + spawnOffset.z));
-        unit.AssignSpawner(this);
-        allFish.Add(unit);
-    }
+    //     unit.SetInitDestination(new Vector3(scale.x * spawnBounds.x + spawnOffset.x,
+    //                                         scale.y * spawnBounds.y + spawnOffset.y,
+    //                                         spawnBounds.z * scale.y + spawnOffset.z));
+    //     unit.AssignSpawner(this);
+    //     unit.speedRatio = fishSpeedRatio;
+    //     allFish.Add(unit);
+    // }
 
     private void SpawnFish(NewFishUnit newfish){
         var unit = Instantiate( fishUnitPrefab, 
@@ -113,22 +131,41 @@ public class Spawner : MonoBehaviour
         unit.SetInitDestination(newfish.destination);
         unit.AssignSpawner(this);
         unit.aliveDuration = int.MaxValue;
+        unit.SetBaseMap(newfish.texture);
         allFish.Add(unit);
+    }
+
+    public void SetConfig(SpawnSetUp setup){
+        this.spawnBound = setup.spawnBound;
+        this.offset = setup.zOffset;
+        this.maxUnit = setup.maxUnit;
+        this.maxDuration = setup.maxDuration;
+        this.fishSpeedRatio = setup.fishSpeedRatio;
+        this.autoSetup = setup.autoSetup;
     }
 
     private void OnDrawGizmosSelected() {
         Gizmos.color = Color.red;
-        var centerOfBox = transform.position + offset;
-        Gizmos.DrawWireCube(centerOfBox, spawnBounds * 2);
+        var centerOfBox = transform.position + Vector3.forward * offset;
+        Vector3 cubesize = new Vector3(centerOfBox.z * 2.1f, centerOfBox.z / 2.5f, spawnBound/2);
+        Gizmos.DrawWireCube(centerOfBox, cubesize * 2);
     }
 
     [System.Serializable]
     struct NewFishUnit{
         public Vector3 spawnPosition;
         public Vector3 destination;
+        public Texture texture;
+        
         public NewFishUnit(Vector3 setDestination, Vector3 setPosition){
             spawnPosition = setPosition;
             destination = setDestination;
+            texture = null;
+        }
+        public NewFishUnit(Vector3 setDestination, Vector3 setPosition, Texture setTexture){
+            spawnPosition = setPosition;
+            destination = setDestination;
+            texture = setTexture;
         }
     }
 }
