@@ -22,14 +22,19 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: Whale
   m_Shader: {fileID: -6465566751694194690, guid: 6bbd78daf512541508535472eae0a407, type: 3}
-  m_ValidKeywords: []
+  m_ValidKeywords:
+  - _ALPHATEST_ON
+  - _SURFACE_TYPE_TRANSPARENT
   m_InvalidKeywords: []
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
+  stringTagMap:
+    RenderType: Transparent
+  disabledShaderPasses:
+  - DepthOnly
+  - SHADOWCASTER
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
@@ -55,9 +60,14 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
+    - _AlphaClip: 1
+    - _Blend: 0
+    - _CastShadows: 0
+    - _Cull: 0
     - _DistFin: 0
     - _DistTail: 0.1
     - _DistY: 0.0278
+    - _DstBlend: 10
     - _FlipX: 0
     - _FreqFin: 0
     - _FreqTail: 2
@@ -68,12 +78,18 @@ Material:
     - _MinEdge: 0
     - _QueueControl: 0
     - _QueueOffset: 0
+    - _RandomValue: 0
     - _SpeedFin: 4
     - _SpeedTail: 1
     - _SpeedX: 10
     - _Spin: 0
+    - _SrcBlend: 5
+    - _Surface: 1
     - _UpperFinZone: 10
     - _WaveZone: 0.005
+    - _ZTest: 4
+    - _ZWrite: 0
+    - _ZWriteControl: 0
     - _isMammal: 1
     m_Colors: []
   m_BuildTextureStacks: []

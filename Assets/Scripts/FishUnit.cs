@@ -12,42 +12,70 @@ public class FishUnit : MonoBehaviour
     private Spawner spawner;
 
     [Header ("Setup Target Spawn")]
-    [SerializeField]private float maxDepth;
-    [SerializeField]private float minZPos;
-    [SerializeField][Range (0, 1)]private float nextTargetRatio;
+    [SerializeField]
+    [Tooltip ("Distance between the nearest and the farthest on z Axis")]private float maxDepth;
+    [SerializeField]
+    [Tooltip ("The Minimize of distance between an unit and the camera")]private float minZPos;
+    [SerializeField][Range (0, 1)]
+    [Tooltip ("The Ratio to random the next destination")]private float nextTargetRatio;
 
     [Header ("Target Setup")]
     [HideInInspector]
-    [SerializeField]private Vector3 destination;
-    [SerializeField]private float distanceThreshold;
-    [SerializeField]private float maxRedirectTime;
+    [SerializeField]
+    [Tooltip ("The destination position")]private Vector3 destination;
+    [SerializeField]
+    [Tooltip ("The Minimize of distance between an unit and destination")]private float distanceThreshold;
+    [SerializeField]
+    [Tooltip ("Time remain to decide to change direction to destination")]private float maxRedirectTime;
     [HideInInspector][SerializeField]private float redirectTime;
 
     [Header ("Movement")]
     [HideInInspector][SerializeField]private Vector3 currentVelocity;
-    [SerializeField]private float smoothDamp;
+    [SerializeField]
+    [Tooltip ("How smooth to rotate when moving")]private float smoothDamp;
     [SerializeField]private float speed;
     [HideInInspector][SerializeField]private float Cspeed;
-    [SerializeField]private float rotateSpeed;
+    [SerializeField]
+    [Tooltip ("Rotation speed when rotate move than 170 degrees")]private float rotateSpeed;
 
     [Header ("Shader")]
     [SerializeField]private MeshRenderer _renderer;
-    [SerializeField]private bool isSpin = false;
-    [SerializeField]private bool isSet = false;
-    [SerializeField][Range (0, 1)]private float probSpin;
+    [HideInInspector][SerializeField]private bool isSpin = false;
+    [HideInInspector][SerializeField]private bool isSet = false;
+    [SerializeField][Range (0, 1)]
+    [Tooltip ("Prob about Event spin when reach destination")]private float probSpin;
 
     // properties
     [Header ("Properties")]
-    private bool isRotate = false;
-    private Vector3 rotatePoint;
     [HideInInspector]public List<UnitType> fishType;
     [HideInInspector]public List<UnitType> mammalType;
+    private bool isRotate = false;
+    private Vector3 rotatePoint;
     public float aliveDuration;
     private bool isDead = false;
     [Range (0, 1)]public float speedRatio;
     
+
+    // Set by spawner
+    // Set first destination
+    public void SetInitDestination(Vector3 dest){
+        destination = dest;
+    }
+
+    // Set spawner
+    public void AssignSpawner(Spawner spawner){
+        this.spawner = spawner;
+    }
+
+    // Set baseMap fish
+    public void SetBaseMap(Texture baseMap){
+        _renderer.material.SetTexture("_BaseMap", baseMap);
+    }
+
+
     void Start()
     {
+        // When spawned by spawner
         if(spawner){
             fishType = spawner.fishType;
             mammalType = spawner.mammalType;
@@ -55,20 +83,13 @@ public class FishUnit : MonoBehaviour
         SpawnMe();
     }
 
-    public void SetInitDestination(Vector3 dest){
-        destination = dest;
-    }
-
-    public void SetBaseMap(Texture baseMap){
-        _renderer.material.SetTexture("_BaseMap", baseMap);
-    }
-
+    // Setup start fish
     public void SpawnMe(){
         if(!isSet)
             StartCoroutine(SpawnFish());
 
-        // Fish & Mammal
-
+        // Shader animation
+        // disable first
         if(fishType.Exists(t => t == _type) || mammalType.Exists(t => t == _type))
             _renderer.material.SetFloat("_DistTail", 0);
         if(_type == UnitType.Turtle)
@@ -82,6 +103,8 @@ public class FishUnit : MonoBehaviour
             yield return null;
         }
         isSet = true;
+        
+        // Shader animation
         // Start swim
         if(fishType.Exists(t => t == _type) || mammalType.Exists(t => t == _type))
             _renderer.material.SetFloat("_DistTail", 0.1f);
@@ -90,13 +113,18 @@ public class FishUnit : MonoBehaviour
         _renderer.material.SetFloat("_RandomValue", UnityEngine.Random.Range(-3.14f, 3.14f));
     }
 
+
     void Update()
     {
+        // When SpawnFish done
         if(isSet){
+            // Movement
             CheckDestination();
+
+            // Check alive
             aliveDuration -= Time.deltaTime;
             if(aliveDuration <= 0 && !isDead ){
-                // exit events
+                // exit event
                 ExitPool();
             }
         }
@@ -106,7 +134,9 @@ public class FishUnit : MonoBehaviour
     private void ExitPool(){
         isDead = true;
         destination = new Vector3(0, 0, 20);
+
         spawner.allFish.Remove(this);
+
         StartCoroutine(LeavePool());
     }
 
@@ -117,21 +147,23 @@ public class FishUnit : MonoBehaviour
         Destroy(this.gameObject, 2);
     }
 
-    private void CheckDestination(){
 
+    private void CheckDestination(){
+        // Set the unit types can spin 
         UnitType[] arrayCanSpin = {UnitType.Tuna, UnitType.Parrotfish, UnitType.Turtle, UnitType.Dolphin};
         List<UnitType> canSpin = new List<UnitType>();
         canSpin.AddRange(arrayCanSpin);
 
         // check destination
         if(Vector3.Distance(transform.position, destination) < distanceThreshold){
-            // random new destination
+            // random new destination and reset redirectTime
             destination = RandomNewDestination();
             redirectTime = 0;
+
             var moveVector = destination - transform.position;
             if(Mathf.Abs(Vector3.SignedAngle(transform.forward, moveVector, Vector3.forward)) > 170){
                 // only fish and turtle can spin
-
+                // Check method to redirect to destination
                 if(canSpin.Exists(t => t == _type) && UnityEngine.Random.value > probSpin){
                     Debug.Log("Spin");
                     SpinRightRound();
@@ -145,9 +177,13 @@ public class FishUnit : MonoBehaviour
             }
         }
         else{
-            
+            // unit doesn't reach the destination
             redirectTime += Time.deltaTime;
+
+            
             if(redirectTime >= maxRedirectTime && maxRedirectTime != 0){
+                // Timeout 
+                // check direction is normal or not
                 if(Vector3.Angle(transform.forward, destination - transform.position) > 25){
                     if(canSpin.Exists(t => t == _type)){
                         SpinRightRound();
@@ -218,7 +254,6 @@ public class FishUnit : MonoBehaviour
         }
         else{
             transform.RotateAround(rotatePoint, Vector3.up, -rotateSpeed * Time.deltaTime);
-            // transform.position += moveVector * Time.deltaTime;
             transform.position += transform.forward * Time.deltaTime;
             transform.right = transform.position - rotatePoint;
             if(Mathf.Abs(Vector3.SignedAngle(transform.forward, moveVector, Vector3.up)) < 40)
@@ -233,7 +268,7 @@ public class FishUnit : MonoBehaviour
         }
     }
 
-
+    // Shader animation spin
     IEnumerator Spin(){
         Debug.Log("Star Spin");
         isSpin = true;
@@ -250,9 +285,6 @@ public class FishUnit : MonoBehaviour
     }
 
 
-    public void AssignSpawner(Spawner spawner){
-        this.spawner = spawner;
-    }
     private void OnDrawGizmos() {
         
         Gizmos.color = Color.white;
@@ -282,6 +314,7 @@ public class FishUnit : MonoBehaviour
         }
     }
 
+    // Utillity
     private Vector3 CalculateBoundTarget(Vector3 oldDest, out Vector3 boxSize){
         Vector3 centerOfBox;
         var maxYpos = oldDest.z * 0.45f;

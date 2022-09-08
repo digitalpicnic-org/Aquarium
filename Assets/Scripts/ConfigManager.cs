@@ -5,11 +5,23 @@ using UnityEngine;
 
 public class ConfigManager : MonoBehaviour
 {
+    public bool isEditor;
     [SerializeField]private List<Spawner> spawners;
     public SpawnList spawnList;
     
     private void Start() {
-        StartCoroutine(SetupSpawners());
+        if(isEditor){
+            foreach(var setup in spawnList.spawnSetUps){
+                SetSpawner(setup);
+            }
+            foreach(var spawner in spawners){
+                spawner.SetupUnitType();
+            }
+        }
+        else{
+            StartCoroutine(SetupSpawners());
+        }
+        
     }
 
     IEnumerator SetupSpawners(){
