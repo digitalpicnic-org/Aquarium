@@ -25,15 +25,25 @@ public class ConfigManager : MonoBehaviour
     }
 
     IEnumerator SetupSpawners(){
+        string path;
+#if UNITY_STANDALONE_OSX && !UNITY_EDITOR
+        path = @"" + Application.dataPath + "/Resources/Data/StreamingAssets" + "/config.json";
+#elif UNITY_STANDALONE && !UNITY_EDITOR
+        path = @"" + Application.dataPath + "/StreamingAssets" + "/config.json";
+#else
+        path = @"" + Application.dataPath + "/config.json";
+#endif
         try{
-            string strInput = File.ReadAllText(Application.dataPath + "/config.json");
+
+            string strInput = File.ReadAllText(path);
+
             spawnList = JsonUtility.FromJson<SpawnList>(strInput);
             Debug.Log("Read file");
         }
         catch{
             string strOutput = JsonUtility.ToJson(spawnList);
 
-            File.WriteAllText(Application.dataPath + "/config.json", strOutput);
+            File.WriteAllText(path, strOutput);
             Debug.Log("Create new file");
         }
         yield return new WaitForSeconds(0.5f);
