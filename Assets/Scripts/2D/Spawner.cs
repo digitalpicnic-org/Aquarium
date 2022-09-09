@@ -100,6 +100,21 @@ public class Spawner : MonoBehaviour
         }
     }
 
+    public void FetchNewUnit(string path){
+        if(path != string.Empty){
+            // string path = "../AquariumProject/SavedImages/" + filename;
+            // string path = @""+"/Users/dp-korn/Documents/Unity/Aquarium/Assets/Arts/Colored fish/remove noise/" + filename + ".png";
+            var rawData = System.IO.File.ReadAllBytes(@""+path);
+            Texture2D tex = new Texture2D(2, 2); // Create an empty Texture; size doesn't matter (she said)
+            tex.LoadImage(rawData);
+            if(tex){
+                nextTexture = tex;
+                GenerateUnit();
+            }
+                    
+        }
+    }
+
     private void GenerateUnit(){
         Vector3 destination;
         Vector3 spawnPosition = RandomSpawnPoint(out destination);

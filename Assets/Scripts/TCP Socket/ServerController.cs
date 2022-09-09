@@ -43,7 +43,7 @@ public class ServerController : MonoBehaviour
         spawners.AddRange(FindObjectsOfType<Spawner>());
         var spawner = spawners.Find(spawner => (int)spawner.spawnerType == message.id);
         spawner.filename = message.filepath;
-        spawner.FetchNewUnit();
+        spawner.FetchNewUnit(message.filepath);
     }
 
    
