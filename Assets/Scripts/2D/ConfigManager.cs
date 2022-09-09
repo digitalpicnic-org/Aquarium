@@ -65,15 +65,17 @@ public class ConfigManager : MonoBehaviour
         public float spawnBound;
         public float zOffset;
         public int maxUnit;
+        public int initUnit;
         public float maxDuration;
         public float fishSpeedRatio;
         public bool autoSetup;
 
-        public SpawnSetUp(int type, float bound, float offset, int maxUnit, float maxDuration, float fishSpeedRatio, bool autoSetup){
+        public SpawnSetUp(int type, float bound, float offset, int maxUnit, int initUnit, float maxDuration, float fishSpeedRatio, bool autoSetup){
             this.unitType = (UnitType)type;
             this.spawnBound = bound;
             this.zOffset = offset;
             this.maxUnit = maxUnit;
+            this.initUnit = initUnit;
             this.maxDuration = maxDuration;
             this.fishSpeedRatio = fishSpeedRatio;
             this.autoSetup = autoSetup;

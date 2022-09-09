@@ -21,6 +21,7 @@ public class Spawner : MonoBehaviour
     [Header ("Shader Fish")]
     [SerializeField]private Texture defaultTexture;
     [SerializeField]private Texture nextTexture;
+    public string filename;
 
     // Type Properties
     private List<UnitType> _fishType = new List<UnitType>();
@@ -29,6 +30,7 @@ public class Spawner : MonoBehaviour
     public List<UnitType> mammalType {get {return _mammalType;}}
     public UnitType spawnerType;
     private bool isStart = false;
+    public int initUnit;
 
     void Start()
     {
@@ -42,7 +44,7 @@ public class Spawner : MonoBehaviour
         _mammalType.AddRange(mammals);
         
         if(autoSetup){
-            for(int i = 0 ; i < maxUnit ; i++){
+            for(int i = 0 ; i < initUnit ; i++){
                 GenerateUnit();
             }
         }
@@ -57,9 +59,15 @@ public class Spawner : MonoBehaviour
     {
         if(!isStart) return;
 
-        if(Input.GetKeyDown(keyCode)){
+        if(!Input.GetKey(KeyCode.Space) && Input.GetKeyDown(keyCode)){
             // SpawnFish();
             GenerateUnit();
+        }
+
+        // Fetch Texture from path
+        if( Input.GetKey(KeyCode.Space) && Input.GetKeyDown(keyCode)){
+            Debug.Log("owo");
+            FetchNewUnit();
         }
 
         if(newFishs.Count > 0){
@@ -74,6 +82,21 @@ public class Spawner : MonoBehaviour
                     allFish[0].aliveDuration = maxDuration;
                 }
             }
+        }
+    }
+
+    public void FetchNewUnit(){
+        if(filename != string.Empty){
+            // string path = "../AquariumProject/SavedImages/" + filename;
+            string path = @""+"/Users/dp-korn/Documents/Unity/Aquarium/Assets/Arts/Colored fish/remove noise/" + filename + ".png";
+            var rawData = System.IO.File.ReadAllBytes(path);
+            Texture2D tex = new Texture2D(2, 2); // Create an empty Texture; size doesn't matter (she said)
+            tex.LoadImage(rawData);
+            if(tex){
+                nextTexture = tex;
+                GenerateUnit();
+            }
+                    
         }
     }
 
@@ -139,6 +162,12 @@ public class Spawner : MonoBehaviour
         this.spawnBound = setup.spawnBound;
         this.offset = setup.zOffset;
         this.maxUnit = setup.maxUnit;
+        if(initUnit >= maxUnit){
+            this.initUnit = maxUnit;
+        }
+        else{
+            this.initUnit = setup.initUnit;
+        }
         this.maxDuration = setup.maxDuration;
         this.fishSpeedRatio = setup.fishSpeedRatio;
         this.autoSetup = setup.autoSetup;
