@@ -1505,7 +1505,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 889bd5f9821174f18b57d0c04e98feef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isEditor: 1
+  isEditor: 0
   spawners:
   - {fileID: 1274758136}
   - {fileID: 1342489933}
@@ -1523,55 +1523,55 @@ MonoBehaviour:
       initUnit: 5
       maxDuration: 4
       fishSpeedRatio: 0.4
-      autoSetup: 0
+      autoSetup: 1
     - unitType: 7
       spawnBound: 3
       zOffset: -6.5
       maxUnit: 15
-      initUnit: 0
+      initUnit: 2
       maxDuration: 5
       fishSpeedRatio: 0.4
-      autoSetup: 0
+      autoSetup: 1
     - unitType: 6
       spawnBound: 4
       zOffset: -8
       maxUnit: 15
-      initUnit: 0
+      initUnit: 4
       maxDuration: 4
       fishSpeedRatio: 0.4
-      autoSetup: 0
+      autoSetup: 1
     - unitType: 2
       spawnBound: 3
       zOffset: -8.5
       maxUnit: 6
-      initUnit: 0
+      initUnit: 2
       maxDuration: 10
       fishSpeedRatio: 0.4
-      autoSetup: 0
+      autoSetup: 1
     - unitType: 1
       spawnBound: 2
       zOffset: -6
       maxUnit: 7
-      initUnit: 0
+      initUnit: 2
       maxDuration: 5
       fishSpeedRatio: 0.4
-      autoSetup: 0
+      autoSetup: 1
     - unitType: 3
       spawnBound: 1
       zOffset: -5.5
       maxUnit: 5
-      initUnit: 0
+      initUnit: 1
       maxDuration: 10
       fishSpeedRatio: 0.4
-      autoSetup: 0
+      autoSetup: 1
     - unitType: 5
       spawnBound: 2
       zOffset: -10
       maxUnit: 15
-      initUnit: 0
+      initUnit: 2
       maxDuration: 5
       fishSpeedRatio: 0.4
-      autoSetup: 0
+      autoSetup: 1
 --- !u!82 &917878698
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2549,9 +2549,9 @@ MonoBehaviour:
   maxDuration: 180
   fishSpeedRatio: 0
   newFishs: []
-  defaultTexture: {fileID: 2800000, guid: 2c20dfd7e851948a48ddc34305cdcf32, type: 3}
+  defaultTexture: {fileID: 2800000, guid: d7f875241c7ff4490bfff37f2c50382f, type: 3}
   nextTexture: {fileID: 0}
-  filename: img_20220907-165950
+  filename: img_20220909-145744
   spawnerType: 7
   initUnit: 0
   horizontalCamAngle: 106.7503
