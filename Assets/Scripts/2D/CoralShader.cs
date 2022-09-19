@@ -12,7 +12,7 @@ public class CoralShader : MonoBehaviour
     public bool isFlip;
     void Start()
     {
-        _renderer.material.SetFloat("_Random", UnityEngine.Random.value);
+        _renderer.material.SetFloat("_Random", UnityEngine.Random.Range(-3.14f, 3.14f));
         UpdateShader();
     }
 

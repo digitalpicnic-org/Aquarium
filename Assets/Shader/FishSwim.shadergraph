@@ -3701,9 +3701,9 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": 2061.0,
-            "y": 612.0,
-            "width": 170.000244140625,
+            "x": 1859.0,
+            "y": 552.0,
+            "width": 170.0,
             "height": 142.0
         }
     },
@@ -5307,8 +5307,8 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": 2175.0,
-            "y": 896.0,
+            "x": 1920.0,
+            "y": 904.0,
             "width": 172.0,
             "height": 142.0
         }
@@ -8749,9 +8749,9 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": 1997.0001220703125,
-            "y": 1038.0,
-            "width": 127.9998779296875,
+            "x": 1742.0,
+            "y": 1046.0,
+            "width": 128.0,
             "height": 101.0
         }
     },
@@ -9617,10 +9617,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": 1838.0,
-            "y": 754.0,
+            "x": 1588.0,
+            "y": 739.0,
             "width": 103.0,
-            "height": 34.00006103515625
+            "height": 34.0
         }
     },
     "m_Slots": [
@@ -11562,10 +11562,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": 2313.0,
-            "y": 451.0000305175781,
+            "x": 2111.0,
+            "y": 391.0,
             "width": 208.0,
-            "height": 411.0000305175781
+            "height": 411.00006103515627
         }
     },
     "m_Slots": [
@@ -11674,7 +11674,7 @@
     "m_StageCapability": 3,
     "m_Value": {
         "x": 1.0,
-        "y": 0.9800000190734863
+        "y": 1.0
     },
     "m_DefaultValue": {
         "x": 0.0,
@@ -11943,8 +11943,8 @@
     "m_ObjectId": "b073e1e6a74441d48f6fe12a4f0aaae6",
     "m_Title": "Texture",
     "m_Position": {
-        "x": 1813.0,
-        "y": 392.0000305175781
+        "x": 1563.0,
+        "y": 332.0
     }
 }
 
@@ -15451,9 +15451,9 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": 1997.0001220703125,
-            "y": 919.0,
-            "width": 127.9998779296875,
+            "x": 1742.0,
+            "y": 927.0,
+            "width": 128.0,
             "height": 101.0
         }
     },
@@ -15522,7 +15522,7 @@
     "m_RefNameGeneratedByDisplayName": "FlipX",
     "m_DefaultReferenceName": "_FlipX",
     "m_OverrideReferenceName": "",
-    "m_GeneratePropertyBlock": true,
+    "m_GeneratePropertyBlock": false,
     "m_UseCustomSlotLabel": false,
     "m_CustomSlotLabel": "",
     "m_Precision": 0,

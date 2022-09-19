@@ -31,6 +31,7 @@ public class Spawner : MonoBehaviour
     public UnitType spawnerType;
     private bool isStart = false;
     public int initUnit;
+    public float horizontalCamAngle;
 
     void Start()
     {
@@ -130,12 +131,13 @@ public class Spawner : MonoBehaviour
         var spawnOffset = transform.position + Vector3.forward * offset;
 
         var zPos = spawnBound/2 * scale.z + spawnOffset.z;
+        // x = tan horizontal y = 60
 
-        Vector3 spawnPosition = new Vector3 (zPos * 2.1f * scale.x + spawnOffset.x, 
+        Vector3 spawnPosition = new Vector3 (zPos * Mathf.Tan(horizontalCamAngle/2 * Mathf.Deg2Rad) * 0.8f * scale.x + spawnOffset.x, 
                                         zPos / 1.732f + spawnOffset.y, 
                                         zPos );
 
-        destination = new Vector3(  zPos * 2.1f * scale.x + spawnOffset.x, 
+        destination = new Vector3(  zPos * Mathf.Tan(horizontalCamAngle/2 * Mathf.Deg2Rad) * 0.8f * scale.x + spawnOffset.x, 
                                     zPos / 2.5f * scale.y + spawnOffset.y,
                                     zPos );
         return spawnPosition;
@@ -191,7 +193,7 @@ public class Spawner : MonoBehaviour
     private void OnDrawGizmosSelected() {
         Gizmos.color = Color.red;
         var centerOfBox = transform.position + Vector3.forward * offset;
-        Vector3 cubesize = new Vector3(centerOfBox.z * 2.1f, centerOfBox.z / 2.5f, spawnBound/2);
+        Vector3 cubesize = new Vector3(centerOfBox.z * Mathf.Tan(horizontalCamAngle/2 * Mathf.Deg2Rad) * 0.8f, centerOfBox.z / 2.5f, spawnBound/2);
         Gizmos.DrawWireCube(centerOfBox, cubesize * 2);
     }
 

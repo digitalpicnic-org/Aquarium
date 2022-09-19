@@ -54,12 +54,14 @@ public class FishUnit : MonoBehaviour
     public float aliveDuration;
     private bool isDead = false;
     [Range (0, 1)]public float speedRatio;
+    private Vector3 initDest;
     
 
     // Set by spawner
     // Set first destination
     public void SetInitDestination(Vector3 dest){
-        destination = dest;
+        // destination = dest;
+        initDest = dest;
     }
 
     // Set spawner
@@ -88,29 +90,38 @@ public class FishUnit : MonoBehaviour
         if(!isSet)
             StartCoroutine(SpawnFish());
 
+        if(mammalType.Exists(t => t == _type) || _type == UnitType.Shark)
+            destination = RandomFirstDestination();
+        else
+            destination = RandomNewDestination();
+        transform.forward = new Vector3(destination.x - initDest.x, 0, destination.z - initDest.z);
+
         // Shader animation
         // disable first
-        if(fishType.Exists(t => t == _type) || mammalType.Exists(t => t == _type))
+        _renderer.material.SetFloat("_RandomValue", UnityEngine.Random.Range(-3.14f, 3.14f));
+        /*if(fishType.Exists(t => t == _type) || mammalType.Exists(t => t == _type))
             _renderer.material.SetFloat("_DistTail", 0);
         if(_type == UnitType.Turtle)
-            _renderer.material.SetFloat("_DistFin", 0);
+            _renderer.material.SetFloat("_DistFin", 0);*/
     }
 
     IEnumerator SpawnFish(){
         // Set drop fish in pool
-        while(Mathf.Abs(transform.position.y - destination.y) > 0.05f){
-            transform.position = Vector3.Lerp(transform.position, destination, Time.deltaTime);
+        while(Mathf.Abs(transform.position.y - initDest.y) > 0.05f){
+            transform.position = Vector3.Lerp(transform.position, initDest, Time.deltaTime);
             yield return null;
         }
         isSet = true;
+            
         
+
+
         // Shader animation
         // Start swim
-        if(fishType.Exists(t => t == _type) || mammalType.Exists(t => t == _type))
+        /*if(fishType.Exists(t => t == _type) || mammalType.Exists(t => t == _type))
             _renderer.material.SetFloat("_DistTail", 0.1f);
         if(_type == UnitType.Turtle)
-            _renderer.material.SetFloat("_DistFin", 0.1f);
-        _renderer.material.SetFloat("_RandomValue", UnityEngine.Random.Range(-3.14f, 3.14f));
+            _renderer.material.SetFloat("_DistFin", 0.1f);*/
     }
 
 
@@ -157,7 +168,10 @@ public class FishUnit : MonoBehaviour
         // check destination
         if(Vector3.Distance(transform.position, destination) < distanceThreshold){
             // random new destination and reset redirectTime
-            destination = RandomNewDestination();
+            if(canSpin.Exists(t => t == _type))
+                destination = RandomNewDestination();
+            else
+                destination = RandomFirstDestination();
             redirectTime = 0;
 
             var moveVector = destination - transform.position;
@@ -208,9 +222,18 @@ public class FishUnit : MonoBehaviour
         Vector3 boxSize;
         Vector3 centerOfBox = CalculateBoundTarget(transform.position, out boxSize);
         
-        return Vector3.Scale(boxSize, UnityEngine.Random.insideUnitSphere) + centerOfBox;
+        return Vector3.Scale(boxSize, scale) + centerOfBox;
     }
     
+    private Vector3 RandomFirstDestination(){
+        var scale = UnityEngine.Random.insideUnitSphere;
+        var x = UnityEngine.Random.value >= 0.5f ? 1 : -1;
+        // var z = UnityEngine.Random.value >= 0.5f ? 1 : 0;
+        Vector3 boxSize;
+        Vector3 centerOfBox = CalculateBoundTarget(transform.position, out boxSize);
+        
+        return Vector3.Scale(boxSize, new Vector3(x, scale.y, scale.z)) + centerOfBox;
+    }
 
     private void MoveUnit(bool isNormal){
         
@@ -321,7 +344,7 @@ public class FishUnit : MonoBehaviour
         var y = Mathf.Clamp(oldDest.y, -maxYpos + maxYpos * nextTargetRatio, maxYpos - maxYpos * nextTargetRatio);
         var z = Mathf.Clamp(oldDest.z, minZPos + maxDepth * nextTargetRatio, minZPos + maxDepth - maxDepth * nextTargetRatio);
         // ในกรอบ 2 ตรงแกน x
-        boxSize = new Vector3(oldDest.z * 3f, maxYpos * nextTargetRatio, maxDepth * nextTargetRatio) ;
+        boxSize = new Vector3(oldDest.z * Mathf.Tan(spawner.horizontalCamAngle/2 * Mathf.Deg2Rad) * 1.4f, maxYpos * nextTargetRatio, maxDepth * nextTargetRatio) ;
 
         centerOfBox = new Vector3(0, y, z);
         return centerOfBox;
