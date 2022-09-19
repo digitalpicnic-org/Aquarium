@@ -244,7 +244,7 @@ public class FishUnit : MonoBehaviour
     }
 
     private bool ValidateNewDestination(Vector3 newDest){
-        if(Vector3.Angle(transform.right, newDest - transform.position) < 30 || Vector3.Angle(-transform.right, newDest - transform.position) < 30){
+        if(Vector3.Angle(Vector3.forward, newDest - transform.position) < 30 || Vector3.Angle(-Vector3.forward, newDest - transform.position) < 30){
             return false;
         }
         else{

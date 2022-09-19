@@ -80,7 +80,7 @@ Material:
     - _QueueOffset: 0
     - _RandomValue: 0
     - _SpeedFin: 4
-    - _SpeedTail: 5
+    - _SpeedTail: 4
     - _SpeedX: 10
     - _Spin: 0
     - _SrcBlend: 5

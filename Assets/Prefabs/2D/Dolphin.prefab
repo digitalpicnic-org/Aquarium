@@ -56,8 +56,8 @@ MonoBehaviour:
   maxRedirectTime: 0
   redirectTime: 0
   currentVelocity: {x: 0, y: 0, z: 0}
-  smoothDamp: 0.7
-  speed: 2
+  smoothDamp: 1
+  speed: 1.5
   Cspeed: 0
   rotateSpeed: 30
   _renderer: {fileID: 768436264099045908}
