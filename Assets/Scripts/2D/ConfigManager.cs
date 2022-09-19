@@ -10,6 +10,7 @@ public class ConfigManager : MonoBehaviour
     public SpawnList spawnList;
     
     private void Start() {
+#if UNITY_EDITOR
         if(isEditor){
             foreach(var setup in spawnList.spawnSetUps){
                 SetSpawner(setup);
@@ -21,6 +22,9 @@ public class ConfigManager : MonoBehaviour
         else{
             StartCoroutine(SetupSpawners());
         }
+#else
+        StartCoroutine(SetupSpawners());
+#endif
         
     }
 
