@@ -35,7 +35,7 @@ public class ConfigManager : MonoBehaviour
 #elif UNITY_STANDALONE && !UNITY_EDITOR
         path = @"" + Application.dataPath + "/StreamingAssets" + "/config.json";
 #else
-        path = @"" + Application.dataPath + "/config.json";
+        path = @"" + Application.dataPath + "/StreamingAssets/config.json";
 #endif
         try{
 
