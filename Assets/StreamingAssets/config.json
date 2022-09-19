@@ -5,50 +5,55 @@
             "spawnBound": 4.0,
             "zOffset": -9.0,
             "maxUnit": 30,
-            "initUnit": 1,
+            "initUnit": 5,
             "maxDuration": 4.0,
             "fishSpeedRatio": 0.4000000059604645,
-            "autoSetup": true
+            "autoSetup": false,
+            "wieghtSize": 1.0
         },
         {
             "unitType": 7,
             "spawnBound": 3.0,
             "zOffset": -6.5,
             "maxUnit": 15,
-            "initUnit": 1,
+            "initUnit": 2,
             "maxDuration": 5.0,
             "fishSpeedRatio": 0.4000000059604645,
-            "autoSetup": true
+            "autoSetup": false,
+            "wieghtSize": 1.0
         },
         {
             "unitType": 6,
             "spawnBound": 4.0,
             "zOffset": -8.0,
             "maxUnit": 15,
-            "initUnit": 1,
+            "initUnit": 4,
             "maxDuration": 4.0,
             "fishSpeedRatio": 0.4000000059604645,
-            "autoSetup": true
+            "autoSetup": false,
+            "wieghtSize": 1.0
         },
         {
             "unitType": 2,
             "spawnBound": 3.0,
             "zOffset": -8.5,
             "maxUnit": 6,
-            "initUnit": 1,
+            "initUnit": 2,
             "maxDuration": 10.0,
             "fishSpeedRatio": 0.4000000059604645,
-            "autoSetup": true
+            "autoSetup": false,
+            "wieghtSize": 1.0
         },
         {
             "unitType": 1,
             "spawnBound": 2.0,
             "zOffset": -6.0,
             "maxUnit": 7,
-            "initUnit": 1,
+            "initUnit": 2,
             "maxDuration": 5.0,
             "fishSpeedRatio": 0.4000000059604645,
-            "autoSetup": true
+            "autoSetup": false,
+            "wieghtSize": 1.0
         },
         {
             "unitType": 3,
@@ -58,17 +63,19 @@
             "initUnit": 1,
             "maxDuration": 10.0,
             "fishSpeedRatio": 0.4000000059604645,
-            "autoSetup": true
+            "autoSetup": false,
+            "wieghtSize": 1.0
         },
         {
             "unitType": 5,
             "spawnBound": 2.0,
             "zOffset": -10.0,
             "maxUnit": 15,
-            "initUnit": 1,
+            "initUnit": 2,
             "maxDuration": 5.0,
             "fishSpeedRatio": 0.4000000059604645,
-            "autoSetup": true
+            "autoSetup": false,
+            "wieghtSize": 1.0
         }
     ]
 }

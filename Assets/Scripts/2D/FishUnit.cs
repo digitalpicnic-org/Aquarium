@@ -90,10 +90,10 @@ public class FishUnit : MonoBehaviour
         if(!isSet)
             StartCoroutine(SpawnFish());
 
-        if(mammalType.Exists(t => t == _type) || _type == UnitType.Shark)
-            destination = RandomFirstDestination();
-        else
-            destination = RandomNewDestination();
+        // if(mammalType.Exists(t => t == _type) || _type == UnitType.Shark)
+            destination = RandomFirstDestination(true);
+        // else
+        //     destination = RandomNewDestination();
         transform.forward = new Vector3(destination.x - initDest.x, 0, destination.z - initDest.z);
 
         // Shader animation
@@ -171,7 +171,7 @@ public class FishUnit : MonoBehaviour
             if(canSpin.Exists(t => t == _type))
                 destination = RandomNewDestination();
             else
-                destination = RandomFirstDestination();
+                destination = RandomFirstDestination(false);
             redirectTime = 0;
 
             var moveVector = destination - transform.position;
@@ -221,18 +221,51 @@ public class FishUnit : MonoBehaviour
         var scale = UnityEngine.Random.insideUnitSphere;
         Vector3 boxSize;
         Vector3 centerOfBox = CalculateBoundTarget(transform.position, out boxSize);
+        var newDest = Vector3.Scale(boxSize, scale) + centerOfBox;
+        if(ValidateNewDestination(newDest))
+            return newDest;
+        else{
+            
+            var newScale = UnityEngine.Random.insideUnitSphere;
+            Debug.Log($"old scale {scale} new scale {newScale}");
+            Vector3 newBoxSize;
+            Vector3 newCenterOfBox = CalculateBoundTarget(transform.position, out newBoxSize);
+            var newSecondDest = Vector3.Scale(newBoxSize, newScale) + newCenterOfBox;
+            if(ValidateNewDestination(newSecondDest)){
+                Debug.Log("Use Second");
+                return newSecondDest;
+            }
+            else{
+                Debug.Log("Use Thrid");
+                return RandomFirstDestination(false);
+            }
+        }
         
-        return Vector3.Scale(boxSize, scale) + centerOfBox;
     }
-    
-    private Vector3 RandomFirstDestination(){
+
+    private bool ValidateNewDestination(Vector3 newDest){
+        if(Vector3.Angle(transform.right, newDest - transform.position) < 30 || Vector3.Angle(-transform.right, newDest - transform.position) < 30){
+            return false;
+        }
+        else{
+            return true;
+        }
+    }
+
+
+    private Vector3 RandomFirstDestination(bool isStart){
         var scale = UnityEngine.Random.insideUnitSphere;
         var x = UnityEngine.Random.value >= 0.5f ? 1 : -1;
         // var z = UnityEngine.Random.value >= 0.5f ? 1 : 0;
         Vector3 boxSize;
         Vector3 centerOfBox = CalculateBoundTarget(transform.position, out boxSize);
+        if(isStart){
+            return Vector3.Scale(boxSize, new Vector3(x, 0, scale.z)) + new Vector3(centerOfBox.x, initDest.y, centerOfBox.z);
+        }
+        else{
+            return Vector3.Scale(boxSize, new Vector3(x, scale.y, scale.z)) + centerOfBox;
+        }
         
-        return Vector3.Scale(boxSize, new Vector3(x, scale.y, scale.z)) + centerOfBox;
     }
 
     private void MoveUnit(bool isNormal){
