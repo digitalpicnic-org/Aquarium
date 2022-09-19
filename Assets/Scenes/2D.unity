@@ -1862,65 +1862,72 @@ MonoBehaviour:
       spawnBound: 4
       zOffset: -9
       maxUnit: 30
-      initUnit: 30
+      initUnit: 5
       maxDuration: 4
       fishSpeedRatio: 0.4
       autoSetup: 1
       wieghtSize: 1
+      name: Tuna
     - unitType: 7
       spawnBound: 3
       zOffset: -6.5
       maxUnit: 5
       initUnit: 5
-      maxDuration: 5
+      maxDuration: 1
       fishSpeedRatio: 0.4
-      autoSetup: 0
+      autoSetup: 1
       wieghtSize: 1
+      name: Shark
     - unitType: 6
       spawnBound: 4
       zOffset: -8
       maxUnit: 15
-      initUnit: 15
+      initUnit: 5
       maxDuration: 4
       fishSpeedRatio: 0.4
-      autoSetup: 0
+      autoSetup: 1
       wieghtSize: 1
+      name: Parrotfish
     - unitType: 2
       spawnBound: 3
       zOffset: -8.5
       maxUnit: 6
-      initUnit: 6
+      initUnit: 2
       maxDuration: 10
       fishSpeedRatio: 0.4
-      autoSetup: 0
+      autoSetup: 1
       wieghtSize: 1
+      name: Dolphin
     - unitType: 1
       spawnBound: 2
       zOffset: -6
       maxUnit: 7
-      initUnit: 7
+      initUnit: 2
       maxDuration: 5
       fishSpeedRatio: 0.4
-      autoSetup: 0
+      autoSetup: 1
       wieghtSize: 1
+      name: Dugong
     - unitType: 3
       spawnBound: 1
       zOffset: -5.5
       maxUnit: 5
-      initUnit: 5
+      initUnit: 1
       maxDuration: 10
       fishSpeedRatio: 0.4
-      autoSetup: 0
+      autoSetup: 1
       wieghtSize: 1
+      name: Whale
     - unitType: 5
       spawnBound: 2
       zOffset: -10
       maxUnit: 15
-      initUnit: 15
+      initUnit: 2
       maxDuration: 5
       fishSpeedRatio: 0.4
-      autoSetup: 0
+      autoSetup: 1
       wieghtSize: 1
+      name: Turtle
 --- !u!82 &917878698
 AudioSource:
   m_ObjectHideFlags: 0

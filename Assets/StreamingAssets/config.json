@@ -8,30 +8,33 @@
             "initUnit": 5,
             "maxDuration": 4.0,
             "fishSpeedRatio": 0.4000000059604645,
-            "autoSetup": false,
-            "wieghtSize": 1.0
+            "autoSetup": true,
+            "wieghtSize": 1.0,
+            "name": "Tuna"
         },
         {
             "unitType": 7,
             "spawnBound": 3.0,
             "zOffset": -6.5,
-            "maxUnit": 15,
-            "initUnit": 2,
-            "maxDuration": 5.0,
+            "maxUnit": 5,
+            "initUnit": 5,
+            "maxDuration": 1.0,
             "fishSpeedRatio": 0.4000000059604645,
-            "autoSetup": false,
-            "wieghtSize": 1.0
+            "autoSetup": true,
+            "wieghtSize": 1.0,
+            "name": "Shark"
         },
         {
             "unitType": 6,
             "spawnBound": 4.0,
             "zOffset": -8.0,
             "maxUnit": 15,
-            "initUnit": 4,
+            "initUnit": 5,
             "maxDuration": 4.0,
             "fishSpeedRatio": 0.4000000059604645,
-            "autoSetup": false,
-            "wieghtSize": 1.0
+            "autoSetup": true,
+            "wieghtSize": 1.0,
+            "name": "Parrotfish"
         },
         {
             "unitType": 2,
@@ -41,8 +44,9 @@
             "initUnit": 2,
             "maxDuration": 10.0,
             "fishSpeedRatio": 0.4000000059604645,
-            "autoSetup": false,
-            "wieghtSize": 1.0
+            "autoSetup": true,
+            "wieghtSize": 1.0,
+            "name": "Dolphin"
         },
         {
             "unitType": 1,
@@ -52,8 +56,9 @@
             "initUnit": 2,
             "maxDuration": 5.0,
             "fishSpeedRatio": 0.4000000059604645,
-            "autoSetup": false,
-            "wieghtSize": 1.0
+            "autoSetup": true,
+            "wieghtSize": 1.0,
+            "name": "Dugong"
         },
         {
             "unitType": 3,
@@ -63,8 +68,9 @@
             "initUnit": 1,
             "maxDuration": 10.0,
             "fishSpeedRatio": 0.4000000059604645,
-            "autoSetup": false,
-            "wieghtSize": 1.0
+            "autoSetup": true,
+            "wieghtSize": 1.0,
+            "name": "Whale"
         },
         {
             "unitType": 5,
@@ -74,8 +80,9 @@
             "initUnit": 2,
             "maxDuration": 5.0,
             "fishSpeedRatio": 0.4000000059604645,
-            "autoSetup": false,
-            "wieghtSize": 1.0
+            "autoSetup": true,
+            "wieghtSize": 1.0,
+            "name": "Turtle"
         }
     ]
 }
