@@ -1847,7 +1847,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 889bd5f9821174f18b57d0c04e98feef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isEditor: 1
+  isEditor: 0
   spawners:
   - {fileID: 1274758136}
   - {fileID: 1342489933}
@@ -1861,19 +1861,19 @@ MonoBehaviour:
     - unitType: 4
       spawnBound: 4
       zOffset: -9
-      maxUnit: 1
+      maxUnit: 30
       initUnit: 1
-      maxDuration: 4
+      maxDuration: 2
       fishSpeedRatio: 0.4
       autoSetup: 1
-      weightSize: 1
+      weightSize: 0.5
       name: Tuna
     - unitType: 7
       spawnBound: 3
       zOffset: -6.5
-      maxUnit: 1
+      maxUnit: 5
       initUnit: 1
-      maxDuration: 1
+      maxDuration: 4
       fishSpeedRatio: 0.4
       autoSetup: 1
       weightSize: 1
@@ -1881,39 +1881,39 @@ MonoBehaviour:
     - unitType: 6
       spawnBound: 4
       zOffset: -8
-      maxUnit: 1
+      maxUnit: 15
       initUnit: 1
-      maxDuration: 4
+      maxDuration: 2
       fishSpeedRatio: 0.4
       autoSetup: 1
-      weightSize: 1
+      weightSize: 0.5
       name: Parrotfish
     - unitType: 2
       spawnBound: 3
       zOffset: -8.5
-      maxUnit: 1
+      maxUnit: 10
       initUnit: 1
-      maxDuration: 10
+      maxDuration: 2
       fishSpeedRatio: 0.4
       autoSetup: 1
-      weightSize: 1
+      weightSize: 0.7
       name: Dolphin
     - unitType: 1
       spawnBound: 2
       zOffset: -6
-      maxUnit: 1
+      maxUnit: 10
       initUnit: 1
-      maxDuration: 5
+      maxDuration: 2
       fishSpeedRatio: 0.4
       autoSetup: 1
-      weightSize: 1
+      weightSize: 0.7
       name: Dugong
     - unitType: 3
       spawnBound: 1
       zOffset: -5.5
-      maxUnit: 1
+      maxUnit: 5
       initUnit: 1
-      maxDuration: 10
+      maxDuration: 4
       fishSpeedRatio: 0.4
       autoSetup: 1
       weightSize: 1
@@ -1921,12 +1921,12 @@ MonoBehaviour:
     - unitType: 5
       spawnBound: 2
       zOffset: -10
-      maxUnit: 1
+      maxUnit: 15
       initUnit: 1
-      maxDuration: 5
+      maxDuration: 2
       fishSpeedRatio: 0.4
       autoSetup: 1
-      weightSize: 1
+      weightSize: 0.5
       name: Turtle
 --- !u!82 &917878698
 AudioSource:
