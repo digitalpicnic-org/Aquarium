@@ -2,6 +2,12 @@
 
 This project was developed for display a simulation paper fishs aquarium
 
+## Scenario Sequence
+1. Access to StreamingAssets folder
+2. Open config.json and edit what you want to initially 
+3. Open the program and waiting for python TCP connect to step up add new fish in aquarium
+4. You can add a new fish Manually by Spawner Key code ( 1 - 7 : Tuna, Shark, Parrotfish, Dolphin, Dugong, Whale, Turtle )
+
 ## Feature
 - Each fish unit has own setting and move style
 - Implement 2D fish move likes 3D by Shader graph
@@ -26,3 +32,13 @@ This project was developed for display a simulation paper fishs aquarium
 - Type of fish unit
 - Number of unit that spawn initially
 - Bound of box spawner with Field of view
+
+## Spawn Unit
+1. Units will be spawned after open the program 
+2. The number of unit up to spawner initial unit
+3. Add a new unit manually or automatically by user or TCP Socket
+4. if number of unit reach to maximum, the oldest unit will be remove from aquarium a new one by using queue
+5. if unit not has time duration left, the unit will move out off aquarium
+
+## Display Ratio
+This aquarium for display ratio 7:2 or 1920 * 824
