@@ -144,18 +144,22 @@ public class FishUnit : MonoBehaviour
 
     private void ExitPool(){
         isDead = true;
-        destination = new Vector3(0, 0, 20);
-
+        destination = new Vector3(0, 0, 25);
+        distanceThreshold = 1;
         spawner.allFish.Remove(this);
 
         StartCoroutine(LeavePool());
     }
 
     IEnumerator LeavePool(){
-        while(transform.position.z < 17){
+        while(transform.position.z < destination.z){
+            var scale = Mathf.Abs(transform.position.z - destination.z);
+            if(scale < 8){
+                transform.localScale = Vector3.Lerp(transform.localScale, Vector3.zero, (1 - scale / 8) * Time.deltaTime);
+            }
             yield return null;
         }
-        Destroy(this.gameObject, 2);
+        Destroy(this.gameObject);
     }
 
 
@@ -195,7 +199,7 @@ public class FishUnit : MonoBehaviour
             redirectTime += Time.deltaTime;
 
             
-            if(redirectTime >= maxRedirectTime && maxRedirectTime != 0){
+            if(redirectTime >= maxRedirectTime && maxRedirectTime != 0 && !isDead){
                 // Timeout 
                 // check direction is normal or not
                 if(Vector3.Angle(transform.forward, destination - transform.position) > 25){
@@ -301,7 +305,8 @@ public class FishUnit : MonoBehaviour
             
             // movement
             // cohesion
-
+            if(isDead)
+                speed = 5;
 
             
             moveVector = moveVector.normalized * speed * speedRatio;

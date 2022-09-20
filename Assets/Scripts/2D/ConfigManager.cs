@@ -83,9 +83,9 @@ public class ConfigManager : MonoBehaviour
         public float maxDuration;
         public float fishSpeedRatio;
         public bool autoSetup;
-        public float wieghtSize;
+        public float weightSize;
         public string name;
-        public SpawnSetUp(string name,int type, float bound, float offset, int maxUnit, int initUnit, float maxDuration, float fishSpeedRatio, bool autoSetup, float wieghtSize){
+        public SpawnSetUp(string name,int type, float bound, float offset, int maxUnit, int initUnit, float maxDuration, float fishSpeedRatio, bool autoSetup, float weightSize){
             this.unitType = (UnitType)type;
             this.spawnBound = bound;
             this.zOffset = offset;
@@ -94,7 +94,7 @@ public class ConfigManager : MonoBehaviour
             this.maxDuration = maxDuration;
             this.fishSpeedRatio = fishSpeedRatio;
             this.autoSetup = autoSetup;
-            this.wieghtSize = wieghtSize;
+            this.weightSize = weightSize;
             this.name = name;
         }
     }

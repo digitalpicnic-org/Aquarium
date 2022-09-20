@@ -506,7 +506,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 118559360}
   m_LocalRotation: {x: -0, y: -0.7071068, z: 0.7071068, w: 0}
-  m_LocalPosition: {x: 16.7, y: -5.62, z: -2}
+  m_LocalPosition: {x: 16.7, y: -5.86, z: -2}
   m_LocalScale: {x: 3, y: 6, z: 6}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -899,7 +899,7 @@ MonoBehaviour:
   spawnerType: 1
   initUnit: 0
   horizontalCamAngle: 106.7503
-  wieghtSize: 1
+  weightSize: 1
 --- !u!1 &248240387
 GameObject:
   m_ObjectHideFlags: 0
@@ -1196,7 +1196,7 @@ MonoBehaviour:
   spawnerType: 6
   initUnit: 0
   horizontalCamAngle: 106.7503
-  wieghtSize: 1
+  weightSize: 1
 --- !u!1 &548454934
 GameObject:
   m_ObjectHideFlags: 0
@@ -1477,7 +1477,7 @@ GameObject:
   m_Component:
   - component: {fileID: 710431744}
   m_Layer: 0
-  m_Name: BackGround (1)
+  m_Name: BackGround
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1847,7 +1847,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 889bd5f9821174f18b57d0c04e98feef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isEditor: 0
+  isEditor: 1
   spawners:
   - {fileID: 1274758136}
   - {fileID: 1342489933}
@@ -1861,72 +1861,72 @@ MonoBehaviour:
     - unitType: 4
       spawnBound: 4
       zOffset: -9
-      maxUnit: 30
-      initUnit: 5
+      maxUnit: 1
+      initUnit: 1
       maxDuration: 4
       fishSpeedRatio: 0.4
       autoSetup: 1
-      wieghtSize: 1
+      weightSize: 1
       name: Tuna
     - unitType: 7
       spawnBound: 3
       zOffset: -6.5
-      maxUnit: 5
-      initUnit: 5
+      maxUnit: 1
+      initUnit: 1
       maxDuration: 1
       fishSpeedRatio: 0.4
       autoSetup: 1
-      wieghtSize: 1
+      weightSize: 1
       name: Shark
     - unitType: 6
       spawnBound: 4
       zOffset: -8
-      maxUnit: 15
-      initUnit: 5
+      maxUnit: 1
+      initUnit: 1
       maxDuration: 4
       fishSpeedRatio: 0.4
       autoSetup: 1
-      wieghtSize: 1
+      weightSize: 1
       name: Parrotfish
     - unitType: 2
       spawnBound: 3
       zOffset: -8.5
-      maxUnit: 6
-      initUnit: 2
-      maxDuration: 10
-      fishSpeedRatio: 0.4
-      autoSetup: 1
-      wieghtSize: 1
-      name: Dolphin
-    - unitType: 1
-      spawnBound: 2
-      zOffset: -6
-      maxUnit: 7
-      initUnit: 2
-      maxDuration: 5
-      fishSpeedRatio: 0.4
-      autoSetup: 1
-      wieghtSize: 1
-      name: Dugong
-    - unitType: 3
-      spawnBound: 1
-      zOffset: -5.5
-      maxUnit: 5
+      maxUnit: 1
       initUnit: 1
       maxDuration: 10
       fishSpeedRatio: 0.4
       autoSetup: 1
-      wieghtSize: 1
+      weightSize: 1
+      name: Dolphin
+    - unitType: 1
+      spawnBound: 2
+      zOffset: -6
+      maxUnit: 1
+      initUnit: 1
+      maxDuration: 5
+      fishSpeedRatio: 0.4
+      autoSetup: 1
+      weightSize: 1
+      name: Dugong
+    - unitType: 3
+      spawnBound: 1
+      zOffset: -5.5
+      maxUnit: 1
+      initUnit: 1
+      maxDuration: 10
+      fishSpeedRatio: 0.4
+      autoSetup: 1
+      weightSize: 1
       name: Whale
     - unitType: 5
       spawnBound: 2
       zOffset: -10
-      maxUnit: 15
-      initUnit: 2
+      maxUnit: 1
+      initUnit: 1
       maxDuration: 5
       fishSpeedRatio: 0.4
       autoSetup: 1
-      wieghtSize: 1
+      weightSize: 1
       name: Turtle
 --- !u!82 &917878698
 AudioSource:
@@ -2250,7 +2250,7 @@ MonoBehaviour:
   spawnerType: 5
   initUnit: 0
   horizontalCamAngle: 106.7503
-  wieghtSize: 1
+  weightSize: 1
 --- !u!1 &1208486860
 GameObject:
   m_ObjectHideFlags: 0
@@ -2528,7 +2528,7 @@ MonoBehaviour:
   spawnerType: 4
   initUnit: 0
   horizontalCamAngle: 106.7503
-  wieghtSize: 1
+  weightSize: 1
 --- !u!1 &1277736511
 GameObject:
   m_ObjectHideFlags: 0
@@ -2739,7 +2739,7 @@ MonoBehaviour:
   spawnerType: 7
   initUnit: 0
   horizontalCamAngle: 106.7503
-  wieghtSize: 1
+  weightSize: 1
 --- !u!1 &1449698444
 GameObject:
   m_ObjectHideFlags: 0
@@ -2995,7 +2995,7 @@ MonoBehaviour:
   spawnerType: 2
   initUnit: 0
   horizontalCamAngle: 106.7503
-  wieghtSize: 1
+  weightSize: 1
 --- !u!1 &1482855687
 GameObject:
   m_ObjectHideFlags: 0
@@ -3056,7 +3056,7 @@ MonoBehaviour:
   spawnerType: 3
   initUnit: 0
   horizontalCamAngle: 106.7503
-  wieghtSize: 1
+  weightSize: 1
 --- !u!1 &1494532991
 GameObject:
   m_ObjectHideFlags: 0

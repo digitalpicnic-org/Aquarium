@@ -32,7 +32,7 @@ public class Spawner : MonoBehaviour
     private bool isStart = false;
     public int initUnit;
     public float horizontalCamAngle;
-    public float wieghtSize;
+    public float weightSize;
 
 
     void Start()
@@ -169,7 +169,7 @@ public class Spawner : MonoBehaviour
         var unit = Instantiate( fishUnitPrefab, 
                                 newfish.spawnPosition,
                                 Quaternion.Euler(0, 90, 0) );
-        unit.transform.localScale *= wieghtSize;
+        unit.transform.localScale *= weightSize;
         unit.SetInitDestination(newfish.destination);
         unit.AssignSpawner(this);
         unit.aliveDuration = int.MaxValue;
@@ -190,7 +190,7 @@ public class Spawner : MonoBehaviour
         this.maxDuration = setup.maxDuration;
         this.fishSpeedRatio = setup.fishSpeedRatio;
         this.autoSetup = setup.autoSetup;
-        this.wieghtSize = setup.wieghtSize;
+        this.weightSize = setup.weightSize;
     }
 
     private void OnDrawGizmosSelected() {
