@@ -42,3 +42,5 @@ This project was developed for display a simulation paper fishs aquarium
 
 ## Display Ratio
 This aquarium for display ratio 7:2 or 1920 * 824
+
+<img width="970" alt="Screen Shot 2565-09-20 at 14 28 17" src="https://user-images.githubusercontent.com/108858548/191195051-770888c3-1da2-4d6d-84de-f50e1e87fc0d.png">
