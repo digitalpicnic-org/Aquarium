@@ -900,6 +900,7 @@ MonoBehaviour:
   initUnit: 0
   horizontalCamAngle: 106.7503
   weightSize: 1
+  isDummy: 0
 --- !u!1 &248240387
 GameObject:
   m_ObjectHideFlags: 0
@@ -1002,6 +1003,68 @@ MonoBehaviour:
   waveFreq: 5
   waveDist: 0.005
   isFlip: 1
+--- !u!1 &407623170
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 407623171}
+  - component: {fileID: 407623172}
+  m_Layer: 0
+  m_Name: Spawn Whale Dummy
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &407623171
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 407623170}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 917878696}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 90, y: -90, z: 90}
+--- !u!114 &407623172
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 407623170}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2bf48c19f8f0e478db59d25cea4d977e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fishUnitPrefab: {fileID: -7787656627666130787, guid: d430d79c8ddb541cda637d5264e15d7a, type: 3}
+  spawnBound: 1
+  offset: -5
+  keyCode: 256
+  allFish: []
+  autoSetup: 1
+  maxUnit: 5
+  maxDuration: 180
+  fishSpeedRatio: 0.4
+  newFishs: []
+  defaultTexture: {fileID: 2800000, guid: f9f4c429758954ccab4c766f4345709f, type: 3}
+  nextTexture: {fileID: 0}
+  filename: img_20220909-145657
+  spawnerType: 3
+  initUnit: 1
+  horizontalCamAngle: 106.7503
+  weightSize: 1
+  isDummy: 1
 --- !u!1 &413428705
 GameObject:
   m_ObjectHideFlags: 0
@@ -1197,6 +1260,7 @@ MonoBehaviour:
   initUnit: 0
   horizontalCamAngle: 106.7503
   weightSize: 1
+  isDummy: 0
 --- !u!1 &548454934
 GameObject:
   m_ObjectHideFlags: 0
@@ -1832,6 +1896,8 @@ Transform:
   - {fileID: 232964310}
   - {fileID: 1482855688}
   - {fileID: 1139874372}
+  - {fileID: 407623171}
+  - {fileID: 1899332512}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 90, y: -90, z: 90}
@@ -2251,6 +2317,7 @@ MonoBehaviour:
   initUnit: 0
   horizontalCamAngle: 106.7503
   weightSize: 1
+  isDummy: 0
 --- !u!1 &1208486860
 GameObject:
   m_ObjectHideFlags: 0
@@ -2526,9 +2593,10 @@ MonoBehaviour:
   nextTexture: {fileID: 0}
   filename: img_20220907-165921
   spawnerType: 4
-  initUnit: 0
+  initUnit: 2
   horizontalCamAngle: 106.7503
   weightSize: 1
+  isDummy: 0
 --- !u!1 &1277736511
 GameObject:
   m_ObjectHideFlags: 0
@@ -2740,6 +2808,7 @@ MonoBehaviour:
   initUnit: 0
   horizontalCamAngle: 106.7503
   weightSize: 1
+  isDummy: 0
 --- !u!1 &1449698444
 GameObject:
   m_ObjectHideFlags: 0
@@ -2996,6 +3065,7 @@ MonoBehaviour:
   initUnit: 0
   horizontalCamAngle: 106.7503
   weightSize: 1
+  isDummy: 0
 --- !u!1 &1482855687
 GameObject:
   m_ObjectHideFlags: 0
@@ -3057,6 +3127,7 @@ MonoBehaviour:
   initUnit: 0
   horizontalCamAngle: 106.7503
   weightSize: 1
+  isDummy: 0
 --- !u!1 &1494532991
 GameObject:
   m_ObjectHideFlags: 0
@@ -3749,6 +3820,68 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1848401721}
   m_Mesh: {fileID: 8342159127421523248, guid: 1a37e2fa3873d4cbf914e4e1160a9bb7, type: 3}
+--- !u!1 &1899332511
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1899332512}
+  - component: {fileID: 1899332513}
+  m_Layer: 0
+  m_Name: Spawn Shark Dummy
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1899332512
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1899332511}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 917878696}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 90, y: -90, z: 90}
+--- !u!114 &1899332513
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1899332511}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2bf48c19f8f0e478db59d25cea4d977e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fishUnitPrefab: {fileID: 1911538045021973856, guid: ca392da7c86574c54b3cce6ebbd5a476, type: 3}
+  spawnBound: 1
+  offset: -5
+  keyCode: 257
+  allFish: []
+  autoSetup: 1
+  maxUnit: 5
+  maxDuration: 180
+  fishSpeedRatio: 0.4
+  newFishs: []
+  defaultTexture: {fileID: 2800000, guid: 7a8aa3f1b83d34020b19699bda49ade3, type: 3}
+  nextTexture: {fileID: 0}
+  filename: img_20220909-145657
+  spawnerType: 7
+  initUnit: 1
+  horizontalCamAngle: 106.7503
+  weightSize: 1
+  isDummy: 1
 --- !u!1 &1908142960
 GameObject:
   m_ObjectHideFlags: 0

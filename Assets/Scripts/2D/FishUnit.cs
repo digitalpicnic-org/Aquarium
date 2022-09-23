@@ -183,12 +183,12 @@ public class FishUnit : MonoBehaviour
                 // only fish and turtle can spin
                 // Check method to redirect to destination
                 if(canSpin.Exists(t => t == _type) && UnityEngine.Random.value > probSpin){
-                    Debug.Log("Spin");
+                    // Debug.Log("Spin");
                     SpinRightRound();
                     
                 }
                 else{
-                    Debug.Log("Rotate");
+                    // Debug.Log("Rotate");
                     isRotate = true;
                     rotatePoint = transform.position - transform.right;
                 }
@@ -231,16 +231,16 @@ public class FishUnit : MonoBehaviour
         else{
             
             var newScale = UnityEngine.Random.insideUnitSphere;
-            Debug.Log($"old scale {scale} new scale {newScale}");
+            // Debug.Log($"old scale {scale} new scale {newScale}");
             Vector3 newBoxSize;
             Vector3 newCenterOfBox = CalculateBoundTarget(transform.position, out newBoxSize);
             var newSecondDest = Vector3.Scale(newBoxSize, newScale) + newCenterOfBox;
             if(ValidateNewDestination(newSecondDest)){
-                Debug.Log("Use Second");
+                // Debug.Log("Use Second");
                 return newSecondDest;
             }
             else{
-                Debug.Log("Use Thrid");
+                // Debug.Log("Use Thrid");
                 return RandomFirstDestination(false);
             }
         }
@@ -308,7 +308,17 @@ public class FishUnit : MonoBehaviour
             if(isDead)
                 speed = 5;
 
-            
+            if(_type == UnitType.Shark || _type == UnitType.Whale){
+                var outOffScreen = transform.position.z * Mathf.Tan(spawner.horizontalCamAngle/2 * Mathf.Deg2Rad);
+                if(transform.position.x > outOffScreen || transform.position.x < -outOffScreen){
+                    speed = 5;
+                }
+                else
+                {
+                    speed = 1;
+                }
+                    
+            }
             moveVector = moveVector.normalized * speed * speedRatio;
             transform.forward = moveVector;
             transform.position += moveVector * Time.deltaTime;
@@ -331,7 +341,7 @@ public class FishUnit : MonoBehaviour
 
     // Shader animation spin
     IEnumerator Spin(){
-        Debug.Log("Star Spin");
+        // Debug.Log("Star Spin");
         isSpin = true;
         var spin = _renderer.material.GetFloat("_Spin");
         _renderer.material.SetInt("_IsFlip", 1);

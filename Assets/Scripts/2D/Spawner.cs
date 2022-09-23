@@ -33,11 +33,12 @@ public class Spawner : MonoBehaviour
     public int initUnit;
     public float horizontalCamAngle;
     public float weightSize;
-
+    public bool isDummy;
 
     void Start()
     {
-        // SetupUnitType();
+        if(isDummy)
+            SetupUnitType();
     }
 
     public void SetupUnitType(){
@@ -174,6 +175,7 @@ public class Spawner : MonoBehaviour
         unit.AssignSpawner(this);
         unit.aliveDuration = int.MaxValue;
         unit.SetBaseMap(newfish.texture);
+        unit.speedRatio = fishSpeedRatio;
         allFish.Add(unit);
     }
 
