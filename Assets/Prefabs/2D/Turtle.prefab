@@ -136,13 +136,13 @@ MonoBehaviour:
   nextTargetRatio: 1
   destination: {x: 0, y: 0, z: 0}
   distanceThreshold: 1
-  maxRedirectTime: 0
+  maxRedirectTime: 10
   redirectTime: 0
   currentVelocity: {x: 0, y: 0, z: 0}
   smoothDamp: 2
   speed: 0.5
   Cspeed: 0
-  rotateSpeed: 10
+  rotateSpeed: 0
   _renderer: {fileID: 7701778435149833038}
   isSpin: 0
   isSet: 0

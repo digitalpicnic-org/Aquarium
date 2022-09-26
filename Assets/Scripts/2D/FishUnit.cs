@@ -165,7 +165,7 @@ public class FishUnit : MonoBehaviour
 
     private void CheckDestination(){
         // Set the unit types can spin 
-        UnitType[] arrayCanSpin = {UnitType.Tuna, UnitType.Parrotfish, UnitType.Turtle, UnitType.Dolphin};
+        UnitType[] arrayCanSpin = {UnitType.Tuna, UnitType.Parrotfish, UnitType.Dolphin};
         List<UnitType> canSpin = new List<UnitType>();
         canSpin.AddRange(arrayCanSpin);
 
@@ -248,7 +248,7 @@ public class FishUnit : MonoBehaviour
     }
 
     private bool ValidateNewDestination(Vector3 newDest){
-        if(Vector3.Angle(Vector3.forward, newDest - transform.position) < 30 || Vector3.Angle(-Vector3.forward, newDest - transform.position) < 30){
+        if(Vector3.Angle(Vector3.forward, newDest - transform.position) < 70 || Vector3.Angle(-Vector3.forward, newDest - transform.position) < 70){
             return false;
         }
         else{
