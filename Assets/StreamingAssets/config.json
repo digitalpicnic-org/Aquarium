@@ -9,7 +9,7 @@
             "maxDuration": 2.0,
             "fishSpeedRatio": 0.4000000059604645,
             "autoSetup": true,
-            "weightSize": 0.5,
+            "weightSize": 0.6,
             "name": "Tuna"
         },
         {
@@ -33,7 +33,7 @@
             "maxDuration": 2.0,
             "fishSpeedRatio": 0.4000000059604645,
             "autoSetup": true,
-            "weightSize": 0.5,
+            "weightSize": 0.7,
             "name": "Parrotfish"
         },
         {
@@ -57,7 +57,7 @@
             "maxDuration": 2.0,
             "fishSpeedRatio": 0.4000000059604645,
             "autoSetup": true,
-            "weightSize": 0.699999988079071,
+            "weightSize": 0.7,
             "name": "Dugong"
         },
         {
@@ -79,7 +79,7 @@
             "maxUnit": 15,
             "initUnit": 1,
             "maxDuration": 2.0,
-            "fishSpeedRatio": 0.4000000059604645,
+            "fishSpeedRatio": 0.7,
             "autoSetup": true,
             "weightSize": 0.5,
             "name": "Turtle"
